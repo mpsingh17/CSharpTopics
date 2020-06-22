@@ -45,9 +45,10 @@ namespace Enumeration
 
             foreach (var name in Enum.GetNames(typeof(DaysInWeek)))
             {
+                Console.WriteLine(name);
                 //Console.WriteLine(name == DaysInWeek.Monday.ToString());
-                var result = Enum.Parse(typeof(DaysInWeek), name);
-                Console.WriteLine((int) (DaysInWeek)result);
+                //var result = Enum.Parse(typeof(DaysInWeek), name);
+                //Console.WriteLine((int) (DaysInWeek)result);
             }
 
 
