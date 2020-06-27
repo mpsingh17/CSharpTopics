@@ -17,41 +17,39 @@ namespace Enumeration
     {
         static void Main(string[] args)
         {
-            var day = DaysInWeek.Monday;
+            DaysInWeek day = DaysInWeek.Monday;
+            Console.WriteLine("Day of week: {0}", day); // Returns: Monday
 
-            var dayValue = (int) day;
+            int dayValue = (int)day;
+            Console.WriteLine("Day of week Value: {0}", dayValue); // Returns: 1
 
-
-            int random = 10;
-
-            //Console.WriteLine("Day of week: {0}", day);
-            //Console.WriteLine("Day of week Value: {0}", dayValue);
-
-            //Console.WriteLine("Day of week: {0}", (DaysInWeek) dayValue);
+            day = (DaysInWeek)dayValue;
+            Console.WriteLine("Day of week: {0}", day); // Returns: Monday
             
-            //Console.WriteLine("Random day: {0}", (DaysInWeek) random);
+            Console.WriteLine("Day of week: {0}", Enum.GetName(typeof(DaysInWeek), dayValue)); // Returns: Monday if found. Else return null.
 
-            var allDays = Enum.GetValues(typeof(DaysInWeek));
+            DaysInWeek notInEnum = (DaysInWeek)10;
+            Console.WriteLine("Random day: {0}", notInEnum); // Returns: 10 (value of random if not in Enum)
+            Console.WriteLine("Get name using Enum class: {0}", Enum.GetName(typeof(DaysInWeek), 6)); // Returns: Monday
 
-            
-            foreach (var d in allDays)
+            Console.WriteLine("----------------------------------------");
+
+            foreach (short val in Enum.GetValues(typeof(DaysInWeek)))
             {
-                Console.WriteLine((int)(DaysInWeek)d);
-                //Console.WriteLine(Enum.GetName(typeof(DaysInWeek), (DaysInWeek) d));
-                //Console.WriteLine(d);
-
+                Console.WriteLine($"{val} - {(DaysInWeek)val}");
             }
+
             Console.WriteLine("----------------------------------------");
 
             foreach (var name in Enum.GetNames(typeof(DaysInWeek)))
             {
                 Console.WriteLine(name);
-                //Console.WriteLine(name == DaysInWeek.Monday.ToString());
-                //var result = Enum.Parse(typeof(DaysInWeek), name);
-                //Console.WriteLine((int) (DaysInWeek)result);
             }
 
+            Console.WriteLine("----------------------------------------");
 
+            if (Enum.TryParse<DaysInWeek>("Wednesday", out DaysInWeek dayOfWeek))
+                Console.WriteLine($"{dayOfWeek}");
         }
     }
 }
